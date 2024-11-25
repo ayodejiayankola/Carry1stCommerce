@@ -94,6 +94,9 @@
 		35B159792CF4B9AF00C7B417 /* Carry1stCommerce */ = {
 			isa = PBXGroup;
 			children = (
+				35B159A52CF4BC7000C7B417 /* Core */,
+				35B159A42CF4BC6500C7B417 /* Features */,
+				35B159AC2CF4BCF100C7B417 /* Shared */,
 				35B1597A2CF4B9AF00C7B417 /* Carry1stCommerceApp.swift */,
 				35B1597C2CF4B9AF00C7B417 /* ContentView.swift */,
 				35B1597E2CF4B9B100C7B417 /* Assets.xcassets */,
@@ -125,6 +128,75 @@
 				35B159972CF4B9B200C7B417 /* Carry1stCommerceUITestsLaunchTests.swift */,
 			);
 			path = Carry1stCommerceUITests;
+			sourceTree = "<group>";
+		};
+		35B159A42CF4BC6500C7B417 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				35B159A92CF4BC9500C7B417 /* ProductList */,
+				35B159AA2CF4BCAA00C7B417 /* ProductDetail */,
+				35B159AB2CF4BCC100C7B417 /* Cart */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		35B159A52CF4BC7000C7B417 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				35B159A62CF4BC7700C7B417 /* Models */,
+				35B159A72CF4BC8000C7B417 /* Services */,
+				35B159A82CF4BC8700C7B417 /* Managers */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		35B159A62CF4BC7700C7B417 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		35B159A72CF4BC8000C7B417 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		35B159A82CF4BC8700C7B417 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		35B159A92CF4BC9500C7B417 /* ProductList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProductList;
+			sourceTree = "<group>";
+		};
+		35B159AA2CF4BCAA00C7B417 /* ProductDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProductDetail;
+			sourceTree = "<group>";
+		};
+		35B159AB2CF4BCC100C7B417 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		35B159AC2CF4BCF100C7B417 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
