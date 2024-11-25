@@ -171,7 +171,6 @@
 				35B159A72CF4BC8000C7B417 /* HTTPClient */,
 				35B159BB2CF4EC5500C7B417 /* NetworkService */,
 				35B159A62CF4BC7700C7B417 /* Models */,
-				35B159A82CF4BC8700C7B417 /* Managers */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -194,13 +193,6 @@
 				35B159BC2CF4EC8000C7B417 /* HTTPClient.swift */,
 			);
 			path = HTTPClient;
-			sourceTree = "<group>";
-		};
-		35B159A82CF4BC8700C7B417 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 		35B159A92CF4BC9500C7B417 /* ProductList */ = {
