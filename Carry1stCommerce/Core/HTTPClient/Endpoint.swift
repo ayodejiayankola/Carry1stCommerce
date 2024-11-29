@@ -10,7 +10,7 @@ protocol Endpoint {
 }
 
 extension Endpoint {
-  var scheme: String {
+	var scheme: String {
 		return "https"
 	}
 }

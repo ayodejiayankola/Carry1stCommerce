@@ -1,14 +1,13 @@
 //
-//  Carry1stCommerceTests.swift
+//  CartServiceTests.swift
 //  Carry1stCommerceTests
 //
-//  Created by Ayodeji Ayankola on 25/11/2024.
+//  Created by Ayodeji Ayankola on 27/11/2024.
 //
 
 import XCTest
-@testable import Carry1stCommerce
 
-final class Carry1stCommerceTests: XCTestCase {
+final class CartServiceTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
