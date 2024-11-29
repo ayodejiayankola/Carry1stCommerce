@@ -1,21 +1,38 @@
 import SwiftUI
 
 struct CartView: View {
-	@ObservedObject var cartManager: CartManagerViewModel
-	@State private var isNavigatingToProductList = false
+	@EnvironmentObject private var cartManager: CartManagerViewModel
+	@Environment(\.presentationMode) var presentationMode
 	
 	var body: some View {
-		  NavigationView {
-			  if cartManager.items.isEmpty {
-				  emptyStateView
-					  .navigationTitle("")
-			  } else {
-				  cartListView
-					  .navigationTitle("Cart")
-			  }
-		  }
-		  .padding(.top, 0)
-	  }
+		VStack {
+			HStack {
+				Button(action: {
+					presentationMode.wrappedValue.dismiss()
+				}) {
+					Image(systemName: "chevron.left")
+						.foregroundColor(.blue)
+						.imageScale(.large)
+				}
+				
+				Spacer()
+				
+				Text("Cart")
+					.font(.headline)
+				
+				Spacer()
+			}
+			.padding(.leading, 10)
+			
+			if cartManager.items.isEmpty {
+				emptyStateView
+			} else {
+				cartListView
+			}
+		}
+		.navigationBarHidden(true)
+		.navigationBarBackButtonHidden(true)
+	}
 	
 	private var emptyStateView: some View {
 		VStack(spacing: 20) {
@@ -30,7 +47,7 @@ struct CartView: View {
 				.fontWeight(.semibold)
 				.foregroundColor(.primary)
 			
-			Text("Looks like you haven’t added anything to your cart yet. Start exploring and find something you like!")
+			Text("Looks like you haven't added anything to your cart yet. Start exploring and find something you like!")
 				.font(.body)
 				.multilineTextAlignment(.center)
 				.foregroundColor(.secondary)
@@ -55,23 +72,31 @@ struct CartView: View {
 					
 					Spacer()
 					
-					HStack(spacing: 20) {
+					HStack(spacing: 10) {
 						Button(action: {
-							print("Yes")
 							cartManager.updateQuantity(for: item, quantity: item.quantity - 1)
 						}) {
 							Image(systemName: "minus.circle")
-						}.buttonStyle(.plain)
+						}
+						.buttonStyle(.plain)
 						
 						Text("\(item.quantity)")
 							.font(.headline)
 						
 						Button(action: {
-							print("No ...")
 							cartManager.updateQuantity(for: item, quantity: item.quantity + 1)
 						}) {
 							Image(systemName: "plus.circle")
-						}.buttonStyle(.plain)
+						}
+						.buttonStyle(.plain)
+						
+						Button(action: {
+							cartManager.removeFromCart(item)
+						}) {
+							Image(systemName: "trash")
+								.foregroundColor(.red)
+						}
+						.buttonStyle(.plain)
 					}
 				}
 			}
@@ -96,5 +121,6 @@ struct CartView: View {
 }
 
 #Preview {
-	CartView(cartManager: CartManagerViewModel())
+	CartView()
+		.environmentObject(CartManagerViewModel(cartService: CartService()))
 }

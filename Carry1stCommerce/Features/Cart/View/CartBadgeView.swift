@@ -14,6 +14,8 @@ struct CartBadgeView: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: cartIconSize, height: cartIconSize)
+				.symbolVariant(itemCount > 0 ? .fill : .none)
+				.symbolEffect(.bounce, value: itemCount)
 			
 			if itemCount > 0 {
 				Text("\(itemCount)")
@@ -23,6 +25,8 @@ struct CartBadgeView: View {
 					.background(Color.red)
 					.clipShape(Circle())
 					.offset(badgeOffset)
+					.transition(.scale)
+					.animation(.bouncy, value: itemCount)
 					.accessibilityLabel("Cart items")
 					.accessibilityValue("\(itemCount) items")
 			}
