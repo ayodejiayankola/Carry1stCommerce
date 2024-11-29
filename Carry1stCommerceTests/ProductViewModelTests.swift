@@ -1,35 +1,44 @@
-//
-//  ProductViewModelTests.swift
-//  Carry1stCommerceTests
-//
-//  Created by Ayodeji Ayankola on 26/11/2024.
-//
-
 import XCTest
+@testable import Carry1stCommerce
 
+@MainActor
 final class ProductViewModelTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+	
+	var viewModel: ProductViewModel!
+	
+	override func setUp() {
+		viewModel = ProductViewModel(
+			apiService: MockAPIService(product: [.credits1250, .credits150])
+		)
+	}
+	
+	override func tearDown() {
+		viewModel = nil
+		super.tearDown()
+	}
+	
+	func testInitialState() {
+		XCTAssertTrue(viewModel.products.isEmpty)
+		XCTAssertFalse(viewModel.isLoading)
+		XCTAssertNil(viewModel.error)
+	}
+	
+	
+	func testFetchProductsSuccess() async {
+		
+		await viewModel.fetchProducts()
+		
+		XCTAssertEqual(viewModel.products.count, 2)
+		XCTAssertFalse(viewModel.isLoading)
+		XCTAssertNil(viewModel.error)
+	}
+	
+	func testFetchProductsOnlyOnce() async {
+		
+		await viewModel.fetchProducts()
+		let initialProductCount = viewModel.products.count
+		await viewModel.fetchProducts()
+		
+		XCTAssertEqual(viewModel.products.count, initialProductCount)
+	}
 }
