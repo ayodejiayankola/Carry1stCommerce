@@ -6,7 +6,7 @@ final class ProductViewModel: ObservableObject {
 	@Published private(set) var products: [Product] = []
 	@Published var error: AlertData?
 	@Published private(set) var isLoading: Bool = false
-
+	
 	private let apiService: APIServiceable
 	
 	init(apiService: APIServiceable) {
@@ -21,7 +21,7 @@ final class ProductViewModel: ObservableObject {
 		let result = await apiService.getProductBundles()
 		handleResult(result)
 	}
-
+	
 	private func handleResult(_ result: Result<[Product], RequestError>) {
 		switch result {
 		case .success(let products):
