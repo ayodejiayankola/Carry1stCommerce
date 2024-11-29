@@ -21,7 +21,7 @@ extension Product {
 		price: 1,
 		currencyCode: "USD",
 		currencySymbol: "$",
-		quantity: 10,
+		quantity: 2,
 		imageLocation: "https://dev-images-carry1st-products.s3.eu-west-2.amazonaws.com/74e517a3-0615-4019-bb08-cc697cf4e747.png",
 		status: "ACTIVE"
 	)
