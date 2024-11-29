@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct Carry1stCommerceApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	@StateObject private var cartManager = CartManagerViewModel(cartService: CartService())
+	
+	var body: some Scene {
+		WindowGroup {
+			RootView()
+				.environmentObject(cartManager)
+		}
+	}
 }
