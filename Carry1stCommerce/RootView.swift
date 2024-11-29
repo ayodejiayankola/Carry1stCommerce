@@ -7,18 +7,17 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+struct RootView: View {
+	var body: some View {
+		ProductListView(productViewModel: ProductViewModel(apiService: LiveAPIService()))
+	}
 }
 
-#Preview {
-    ContentView()
+#if DEBUG
+struct RootView_Previews: PreviewProvider {
+	static var previews: some View {
+		RootView()
+			.environmentObject(CartManagerViewModel(cartService: CartService()))
+	}
 }
+#endif
