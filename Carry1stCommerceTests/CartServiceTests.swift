@@ -45,6 +45,16 @@ class CartServiceTests: XCTestCase {
 		XCTAssertTrue(cartService.items.isEmpty)
 	}
 	
+	func testAddProductBeyondStock() {
+		let product = Product.lives10
+		cartService.add(product: product)
+		cartService.add(product: product)
+		cartService.add(product: product)
+		
+		XCTAssertEqual(cartService.items.first?.quantity, 2)
+		XCTAssertEqual(cartService.items.count, 1)
+	}
+	
 	
 	func testUpdateQuantity() {
 		let product = Product.credits5000
