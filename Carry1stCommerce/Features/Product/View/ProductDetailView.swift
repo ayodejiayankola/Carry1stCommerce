@@ -86,6 +86,7 @@ struct ProductDetailView: View {
 		.navigationBarTitleDisplayMode(.inline)
 		.background(Color(uiColor: .systemBackground))
 	}
+	
 }
 
 #if DEBUG
