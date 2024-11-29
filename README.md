@@ -80,10 +80,16 @@ The app's architecture is designed with modularity and scalability in mind, foll
 
 ## 🎥 Demo Videos
 ### Light Mode
-[TODO: Insert Light Mode Demo Video]
+
+https://github.com/user-attachments/assets/1452573d-7f5a-471d-992e-abbd67f68609
+
 
 ### Dark Mode
-[TODO: Insert Dark Mode Demo Video]
+
+
+
+https://github.com/user-attachments/assets/8878137d-fe11-42d5-9245-cb240c7b79b9
+
 
 ## 🔍 Future Improvements
 - Offline support for product data and shopping cart
