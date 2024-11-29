@@ -3,9 +3,13 @@ import SwiftUI
 struct CartView: View {
 	@EnvironmentObject private var cartManager: CartManagerViewModel
 	@Environment(\.presentationMode) var presentationMode
+	@State private var showQuantityLimitAlert = false
+	@State private var quantityLimitMessage = ""
+	@State private var alertItem: CartItem?
 	
 	var body: some View {
 		VStack {
+			
 			HStack {
 				Button(action: {
 					presentationMode.wrappedValue.dismiss()
@@ -73,6 +77,7 @@ struct CartView: View {
 					Spacer()
 					
 					HStack(spacing: 10) {
+						
 						Button(action: {
 							cartManager.updateQuantity(for: item, quantity: item.quantity - 1)
 						}) {
@@ -84,7 +89,16 @@ struct CartView: View {
 							.font(.headline)
 						
 						Button(action: {
-							cartManager.updateQuantity(for: item, quantity: item.quantity + 1)
+							let currentCount = item.quantity
+							if handleQuantityLimit(
+								isShown: $showQuantityLimitAlert,
+								message: $quantityLimitMessage,
+								item: item,
+								maxQuantity: item.product.quantity,
+								currentQuantity: currentCount
+							) {
+								cartManager.updateQuantity(for: item, quantity: item.quantity + 1)
+							}
 						}) {
 							Image(systemName: "plus.circle")
 						}
@@ -117,10 +131,19 @@ struct CartView: View {
 				}
 			}
 		}
+		.overlay(
+			Group {
+				if showQuantityLimitAlert {
+					QuantityLimitAlertView(message: quantityLimitMessage)
+				}
+			}
+		)
 	}
 }
 
+#if DEBUG
 #Preview {
 	CartView()
 		.environmentObject(CartManagerViewModel(cartService: CartService()))
 }
+#endif
