@@ -15,12 +15,16 @@ final class CartService: CartServiceProtocol {
 	
 	func add(product: Product) {
 		if let index = items.firstIndex(where: { $0.product.id == product.id }) {
-			items[index].quantity += 1
+			let currentQuantity = items[index].quantity
+			if currentQuantity < product.quantity {
+				items[index].quantity += 1
+			}
 		} else {
 			let newCartItem = CartItem(product: product, quantity: 1)
 			items.append(newCartItem)
 		}
 	}
+	
 	
 	func remove(cartItem: CartItem) {
 		items.removeAll { $0.id == cartItem.id }
