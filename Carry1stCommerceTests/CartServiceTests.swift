@@ -96,5 +96,12 @@ class CartServiceTests: XCTestCase {
 		
 		XCTAssertEqual(cartService.itemCount(for: product), 2)
 	}
+	
+	func testRemoveNonExistingProduct() {
+		let nonExistentCartItem = CartItem(product: Product.lives10, quantity: 1)
+		cartService.remove(cartItem: nonExistentCartItem)
+		
+		XCTAssertTrue(cartService.items.isEmpty)
+	}
 }
 
