@@ -41,6 +41,8 @@ struct PlaceholderView: View {
 	var body: some View {
 		Color.gray.opacity(0.3)
 			.overlay {
+				ProgressView()
+					.progressViewStyle(CircularProgressViewStyle())
 				Text("Loading...")
 					.foregroundColor(.white)
 					.font(.caption)
@@ -52,7 +54,7 @@ struct PlaceholderView: View {
 #if DEBUG
 struct URLImage_Previews: PreviewProvider {
 	static var previews: some View {
-		URLImage(url: URL(string: "https://dev-images-carry1st-products.s3.eu-west-2.amazonaws.com/90f9f165-a35c-4fd2-a1b8-5eae6dc0abb4.png")!, size: CGSize(width: 150, height: 150))
+		URLImage(url: URL(string: Product.credits5000.imageLocation)!, size: CGSize(width: 150, height: 150))
 	}
 }
 #endif
