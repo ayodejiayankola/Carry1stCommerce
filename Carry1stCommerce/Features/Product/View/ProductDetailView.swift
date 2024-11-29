@@ -1,15 +1,14 @@
 import SwiftUI
-import SwiftUI
 
 struct ProductDetailView: View {
 	var product: Product
 	@EnvironmentObject private var cartManager: CartManagerViewModel
 	@State private var showQuantityLimitAlert = false
+	@State private var quantityLimitMessage = ""
 	
 	var body: some View {
 		ScrollView {
 			VStack(spacing: 20) {
-				
 				if let imageURL = URL(string: product.imageLocation) {
 					URLImage(url: imageURL, size: CGSize(width: UIScreen.main.bounds.width - 32, height: 300))
 						.aspectRatio(contentMode: .fill)
@@ -25,7 +24,6 @@ struct ProductDetailView: View {
 				}
 				
 				VStack(alignment: .leading, spacing: 12) {
-					
 					Text(product.name)
 						.font(.title)
 						.fontWeight(.semibold)
@@ -47,15 +45,15 @@ struct ProductDetailView: View {
 					
 					HStack(spacing: 20) {
 						Button(action: {
-							if cartManager.itemCount(for: product) < product.quantity {
+							let currentCount = cartManager.itemCount(for: product)
+							if handleQuantityLimit(
+								isShown: $showQuantityLimitAlert,
+								message: $quantityLimitMessage,
+								item: product,
+								maxQuantity: product.quantity,
+								currentQuantity: currentCount
+							) {
 								cartManager.addToCart(product)
-							} else {
-								withAnimation {
-									showQuantityLimitAlert = true
-									DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-										showQuantityLimitAlert = false
-									}
-								}
 							}
 						}) {
 							Text("Add to Cart")
@@ -90,13 +88,7 @@ struct ProductDetailView: View {
 				.padding([.horizontal, .top])
 				
 				if showQuantityLimitAlert {
-					Text("Maximum quantity reached")
-						.foregroundColor(.white)
-						.padding()
-						.background(Color.red)
-						.cornerRadius(8)
-						.transition(.opacity)
-						.animation(.easeInOut, value: showQuantityLimitAlert)
+					QuantityLimitAlertView(message: quantityLimitMessage)
 				}
 			}
 		}
