@@ -73,7 +73,9 @@ A native iOS e-commerce application demonstrating product listing, detailed prod
 ## 📊 System Design Diagram
 The app's architecture is designed with modularity and scalability in mind, following principles like separation of concerns and MVVM. The UI layer interacts with ViewModels, which encapsulate presentation logic and mediate between the UI and services. Services handle business logic and API communication, abstracted through protocols for flexibility and testability. Core data models define shared structures, and the network layer manages HTTP requests and error handling. Utilities like `ImageLoader` promote reusability and maintainability.
 
-[TODO: Insert System Design Diagram]  
+
+![Carry1st iOS Assessment  drawio](https://github.com/user-attachments/assets/5ef072d0-a9df-41ac-ab54-b6003b9a1d34)
+
 > A comprehensive architectural diagram showing component interactions, data flow, and system structure.
 
 ## 🎥 Demo Videos
@@ -122,6 +124,3 @@ The app's architecture is designed with modularity and scalability in mind, foll
 2. Cart operations are session-based and do not persist across app launches.
 3. The "Buy Now" button is a placeholder without functional implementation for this prototype.
 
----
-
-This revised version streamlines the content while ensuring clarity and coherence. It emphasizes important technical details and project setup instructions, making it easier for other developers or reviewers to follow.
