@@ -85,7 +85,7 @@ struct CartView: View {
 			Button(action: {
 				presentationMode.wrappedValue.dismiss()
 			}) {
-				Text("Continue Shopping")
+				Text(AppStrings.CartView.contineButtonLabel)
 					.padding()
 					.background(Color.blue)
 					.foregroundColor(.white)
