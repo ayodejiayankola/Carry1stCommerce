@@ -39,29 +39,7 @@ struct CartView: View {
 		}
 		.padding(.leading, 10)
 	}
-
-//	private var emptyStateView: some View {
-//		VStack(spacing: 20) {
-//			Image(systemName: "cart")
-//				.resizable()
-//				.scaledToFit()
-//				.frame(width: 100, height: 100)
-//				.foregroundColor(.gray)
-//			
-//			Text(AppStrings.CartView.emptyCartMessage)
-//				.font(.title)
-//				.fontWeight(.semibold)
-//				.foregroundColor(.primary)
-//			
-//			Text(AppStrings.CartView.emptyCartDescription)
-//				.font(.body)
-//				.multilineTextAlignment(.center)
-//				.foregroundColor(.secondary)
-//				.padding(.horizontal, 40)
-//		}
-//		.frame(maxWidth: .infinity, maxHeight: .infinity)
-//		.background(Color(.systemGroupedBackground))
-//		.edgesIgnoringSafeArea(.all)
+	
 	private var emptyStateView: some View {
 		VStack(spacing: 20) {
 			Image(systemName: "cart")
