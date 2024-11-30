@@ -11,6 +11,6 @@ protocol Endpoint {
 
 extension Endpoint {
 	var scheme: String {
-		return "https"
+		return AppStrings.Endpoint.scheme
 	}
 }
