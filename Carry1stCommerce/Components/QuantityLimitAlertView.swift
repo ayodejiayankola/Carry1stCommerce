@@ -4,24 +4,22 @@ struct QuantityLimitAlertView: View {
 	let message: String
 	
 	static let defaultMessages = [
-		"Oops! Maximum stock limit reached",
-		"Sorry, no more items available",
-		"Maximum quantity exceeded",
-		"Stock limit hit for this item",
-		"Can't add more of this product",
-		"Reached maximum available quantity"
+		AppStrings.QuantityLimitAlert.maximumStockLimitReached,
+		   AppStrings.QuantityLimitAlert.noMoreItemsAvailable,
+		   AppStrings.QuantityLimitAlert.maximumQuantityExceeded,
+		   AppStrings.QuantityLimitAlert.stockLimitHit,
+		   AppStrings.QuantityLimitAlert.cantAddMoreProduct,
+		   AppStrings.QuantityLimitAlert.maximumAvailableQuantity
 	]
 	
 	static func randomMessage() -> String {
-		defaultMessages.randomElement() ?? "Maximum quantity reached"
+		defaultMessages.randomElement() ?? AppStrings.QuantityLimitAlert.maximumAvailableQuantity
 	}
 	
 	var body: some View {
 		Text(message)
-			.foregroundColor(.white)
+			.foregroundColor(.red)
 			.padding()
-			.background(Color.red)
-			.cornerRadius(8)
 			.transition(.opacity)
 			.animation(.easeInOut, value: true)
 	}
@@ -37,12 +35,11 @@ extension View {
 	) -> Bool {
 		guard currentQuantity >= maxQuantity else { return true }
 		
-		if let product = item as? Product {
-			message.wrappedValue = "Maximum quantity reached for \(product.name)"
-		} else if let cartItem = item as? CartItem {
-			message.wrappedValue = "Maximum quantity reached for \(cartItem.product.name)"
+		if let product = (item as? Product)?.name ?? (item as? CartItem)?.product.name {
+
+			message.wrappedValue = String(format: AppStrings.QuantityLimitAlert.maximumQuantityForProduct, product)
 		} else {
-			message.wrappedValue = "Maximum quantity reached"
+			message.wrappedValue =    AppStrings.QuantityLimitAlert.maximumQuantityReached
 		}
 		
 		withAnimation {
