@@ -41,4 +41,20 @@ final class ProductViewModelTests: XCTestCase {
 		
 		XCTAssertEqual(viewModel.products.count, initialProductCount)
 	}
+	
+	func testForceRefreshFetch() async {
+		viewModel = ProductViewModel(
+			apiService: MockAPIService(product: [.credits1250])
+		)
+		
+		await viewModel.fetchProducts()
+		XCTAssertEqual(viewModel.products.count, 1)
+		
+		viewModel = ProductViewModel(
+			apiService: MockAPIService(product: [.credits150])
+		)
+		await viewModel.fetchProducts(forceRefresh: true)
+		
+		XCTAssertEqual(viewModel.products.count, 1)
+	}
 }
