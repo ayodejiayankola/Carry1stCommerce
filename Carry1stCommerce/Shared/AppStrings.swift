@@ -51,5 +51,6 @@ enum AppStrings {
 		static let emptyCartMessage = NSLocalizedString("Your cart is empty", comment: "Message when the cart is empty")
 		static let emptyCartDescription = NSLocalizedString("Looks like you haven't added anything to your cart yet. Start exploring and find something you like!", comment: "Description for empty cart")
 		static let totalLabel = NSLocalizedString("Total", comment: "Label for the total amount in the cart")
+		static let contineButtonLabel = NSLocalizedString("Continue Shopping", comment: "Label for the text on the button in empty cart state")
 	}
 }
