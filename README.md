@@ -79,17 +79,27 @@ The app's architecture is designed with modularity and scalability in mind, foll
 > A comprehensive architectural diagram showing component interactions, data flow, and system structure.
 
 ## 🎥 Demo Videos
-### Light Mode
-
-https://github.com/user-attachments/assets/1452573d-7f5a-471d-992e-abbd67f68609
 
 
 ### Dark Mode
 
 
 
-https://github.com/user-attachments/assets/8878137d-fe11-42d5-9245-cb240c7b79b9
 
+https://github.com/user-attachments/assets/55e0cb8b-3471-41f9-858b-70fc0e2ca14a
+
+
+
+
+### Light Mode
+
+
+https://github.com/user-attachments/assets/80fcb923-8cf5-4b21-b6db-c3b375d09285
+
+
+### Retrying when the internet is back
+
+https://github.com/user-attachments/assets/90653622-3191-4aaf-8f78-720f6536d8fa
 
 ## 🔍 Future Improvements
 - Offline support for product data and shopping cart
