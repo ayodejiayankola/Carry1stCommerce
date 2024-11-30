@@ -1,8 +1,8 @@
-//
-//  FormatUtils.swift
-//  Carry1stCommerce
-//
-//  Created by Ayodeji Ayankola on 30/11/2024.
-//
-
 import Foundation
+
+struct FormatUtils {
+	static func formattedCurrency(value: Double, currencySymbol: String) -> String {
+		return "\(currencySymbol)\(String(format: "%.2f", value))"
+	}
+	
+}
