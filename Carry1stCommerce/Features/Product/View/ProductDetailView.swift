@@ -106,7 +106,7 @@ private extension ProductDetailView {
 		}
 	}
 	
-	func addToCart() {
+	private func addToCart() {
 		let currentCount = cartManager.itemCount(for: product)
 		if handleQuantityLimit(
 			isShown: $showQuantityLimitAlert,
