@@ -10,9 +10,10 @@ extension APIEndpoint: Endpoint {
 	}
 	
 	var path: String {
+		let basePath = "/carry1stdeveloper/mock-product-api"
 		switch self {
 		case .productBundles:
-			return "/carry1stdeveloper/mock-product-api/productBundles"
+			return "\(basePath)/productBundles"
 		}
 	}
 	
