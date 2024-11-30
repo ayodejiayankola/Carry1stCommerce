@@ -10,7 +10,7 @@ struct CartBadgeView: View {
 
 	var body: some View {
 		ZStack(alignment: .topTrailing) {
-			Image(systemName: "cart")
+			Image(systemName: AppStrings.CartView.cartTitle.lowercased())
 				.resizable()
 				.scaledToFit()
 				.frame(width: cartIconSize, height: cartIconSize)
@@ -26,9 +26,7 @@ struct CartBadgeView: View {
 					.clipShape(Circle())
 					.offset(badgeOffset)
 					.transition(.scale)
-					.animation(.bouncy, value: itemCount)
-					.accessibilityLabel("Cart items")
-					.accessibilityValue("\(itemCount) items")
+					.animation(.easeInOut(duration: 0.3), value: itemCount)
 			}
 		}
 	}
