@@ -27,7 +27,7 @@ final class ProductViewModel: ObservableObject {
 		case .success(let products):
 			self.products = products
 		case .failure(let error):
-			self.error = AlertData(message: error.errorDescription ?? "An error occurred while fetching products.")
+			self.error = AlertData(message: error.errorDescription ?? AppStrings.ProductViewModel.fetchProductsErrorMessage)
 		}
 	}
 }
