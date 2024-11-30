@@ -43,7 +43,7 @@ struct PlaceholderView: View {
 			.overlay {
 				ProgressView()
 					.progressViewStyle(CircularProgressViewStyle())
-				Text("Loading...")
+				Text(AppStrings.Placeholder.loading)
 					.foregroundColor(.white)
 					.font(.caption)
 			}
