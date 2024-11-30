@@ -13,13 +13,15 @@ final class ProductViewModel: ObservableObject {
 		self.apiService = apiService
 	}
 	
-	func fetchProducts() async {
-		guard products.isEmpty else { return }
+	func fetchProducts(forceRefresh: Bool = false) async {
+		guard forceRefresh || products.isEmpty else { return }
 		isLoading = true
+		error = nil
 		
-		defer { isLoading = false }
 		let result = await apiService.getProductBundles()
 		handleResult(result)
+		
+		isLoading = false
 	}
 	
 	private func handleResult(_ result: Result<[Product], RequestError>) {
