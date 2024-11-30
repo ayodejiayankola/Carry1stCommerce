@@ -114,7 +114,7 @@ extension Product {
 		status: "ACTIVE"
 	)
 	
-	static let noImage = Product(
+	static let wrongImageURL = Product(
 		id: 6,
 		name: "No Image",
 		description: "Credits product bundle.",
