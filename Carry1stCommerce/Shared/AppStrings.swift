@@ -15,10 +15,10 @@ enum AppStrings {
 		static let unknownError = NSLocalizedString("An unknown error occurred.", comment: "Error for any unknown or unexpected error that doesn’t fall into the above categories.")
 	}
 	
-	enum Placeholder {
+	enum Common {
 		static let loading = NSLocalizedString("Loading...", comment: "Text displayed when image is loading")
+		static let retry = NSLocalizedString("Retry", comment: "Text displayed network fail and you will like to click a button to refresh")
 	}
-	
 	enum QuantityLimitAlert {
 		static let maximumStockLimitReached = NSLocalizedString("Oops! Maximum stock limit reached", comment: "Message when maximum stock limit is reached")
 		static let noMoreItemsAvailable = NSLocalizedString("Sorry, no more items available", comment: "Message when no more items are available")
