@@ -17,7 +17,7 @@ struct ProductListView: View {
 		NavigationView {
 			Group {
 				if productViewModel.isLoading {
-					ProgressView("Loading products...")
+					ProgressView(AppStrings.ProductList.loadingProducts)
 						.padding()
 						.foregroundColor(Color(uiColor: .label))
 						.background(Color(uiColor: .secondarySystemBackground))
@@ -41,7 +41,7 @@ struct ProductListView: View {
 			.task {
 				await productViewModel.fetchProducts()
 			}
-			.navigationTitle("Carry1st Commerce")
+			.navigationTitle(AppStrings.ProductList.navigationTitle)
 			.navigationBarItems(trailing:
 									NavigationLink(destination: CartView()) {
 				CartBadgeView(itemCount: cartManager.totalItems())
@@ -55,7 +55,7 @@ struct ProductListView: View {
 #if DEBUG
 struct ProductListView_Previews: PreviewProvider {
 	static var previews: some View {
-		let productViewModel = ProductViewModel(apiService: MockAPIService(product: [.lives10, .lives25, .lives500, .credits1250, .noImage]))
+		let productViewModel = ProductViewModel(apiService: MockAPIService(product: [.lives10, .lives25, .lives500, .credits1250, .wrongImageURL]))
 		ProductListView(productViewModel: productViewModel)
 			.environmentObject(CartManagerViewModel(cartService: CartService()))
 		
