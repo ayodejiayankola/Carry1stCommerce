@@ -17,6 +17,7 @@ A native iOS e-commerce application demonstrating product listing, detailed prod
   - Quantity adjustment
   - Total price calculation
   - Persistent cart state across app sessions
+  - Back Button on empty cart State
 
 ## 🏗 Architecture
 ### Design Patterns
@@ -55,6 +56,9 @@ A native iOS e-commerce application demonstrating product listing, detailed prod
 - Custom error handling
 - Image caching mechanism to improve performance
 - Efficient state management with `@Published`, `environmentObject`, and `@StateObject`
+- Pull to refresh
+- Retry on internet restoration
+- **Centralized String Management**: `AppStrings` manages and localizes text, ensuring consistency and simplifying updates and localization in the future.
 
 ## 🌐 API Integration
 - Mock JSON server for product data
@@ -103,8 +107,8 @@ https://github.com/user-attachments/assets/90653622-3191-4aaf-8f78-720f6536d8fa
 
 ## 🔍 Future Improvements
 - Offline support for product data and shopping cart
-- Enhanced product filtering capabilities
-- Persistent cart storage across app launches
+- Impove product filtering capabilities
+- Persistent cart storage across app launches using core data or realm 
 - Ability to apply discounts during checkout
 - Completing the checkout process
 - Improved error handling and user feedback
