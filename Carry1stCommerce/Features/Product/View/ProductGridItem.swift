@@ -4,11 +4,19 @@ struct ProductGridItem: View {
 	var product: Product
 	@EnvironmentObject private var cartManager: CartManagerViewModel
 	
+	private static var imageWidth: CGFloat {
+		LayoutUtils.gridImageWidth(for: 2)
+	}
+	
+	private var formattedPrice: String {
+		FormatUtils.formattedCurrency(value: product.price, currencySymbol: product.currencySymbol)
+	}
+	
 	var body: some View {
 		NavigationLink(destination: ProductDetailView(product: product)) {
 			VStack(alignment: .center) {
 				if let imageURL = URL(string: product.imageLocation) {
-					URLImage(url: imageURL, size: CGSize(width: UIScreen.main.bounds.width / 2 - 32, height: 100))
+					URLImage(url: imageURL, size: CGSize(width: Self.imageWidth, height: 100))
 						.aspectRatio(contentMode: .fill)
 						.frame(maxWidth: .infinity)
 						.frame(height: 100)
@@ -22,12 +30,13 @@ struct ProductGridItem: View {
 						.fontWeight(.semibold)
 						.foregroundColor(Color(uiColor: .label))
 					
-					Text("$\(product.price, specifier: "%.2f")")
+					Text(formattedPrice)
 						.font(.subheadline)
 						.foregroundColor(Color(uiColor: .secondaryLabel))
 					
-					if cartManager.itemCount(for: product) > 0 {
-						Text("In Cart: \(cartManager.itemCount(for: product))")
+					let itemCount = cartManager.itemCount(for: product)
+					if itemCount > 0 {
+						Text("\(AppStrings.ProductDetail.inCart) \(itemCount)")
 							.font(.caption)
 							.foregroundColor(Color(uiColor: .systemBlue))
 					}
@@ -47,13 +56,11 @@ struct ProductGridItem: View {
 }
 
 #if DEBUG
-struct ProductGridItem_Previews: PreviewProvider {
-	static var previews: some View {
+#Preview {
 		let mockCartService = CartService()
 		let mockCartManager = CartManagerViewModel(cartService: mockCartService)
-		
-		return ProductGridItem(product: .lives125)
+		let mockProduct = Product.credits250
+		return ProductGridItem(product: mockProduct)
 			.environmentObject(mockCartManager)
 	}
-}
 #endif
