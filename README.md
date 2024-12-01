@@ -105,7 +105,7 @@ This app relies exclusively on **native Swift frameworks** to ensure efficiency 
 ### 💻 Setup and Installation  
 
 1. Clone the repository:  
-   ``
+   ```
    git clone https://github.com/ayodejiayankola/Carry1stCommerce.git  
    ```  
 2. Navigate to the project directory:  
