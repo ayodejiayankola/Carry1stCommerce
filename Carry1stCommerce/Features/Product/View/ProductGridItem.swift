@@ -41,6 +41,7 @@ struct ProductGridItem: View {
 							.foregroundColor(Color(uiColor: .systemBlue))
 					}
 				}
+				.frame(height: 80) 
 				.padding(.horizontal, 8)
 				.padding(.vertical, 6)
 			}
