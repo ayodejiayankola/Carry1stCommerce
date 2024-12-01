@@ -5,12 +5,10 @@ The Carry1st iOS Commerce App is a native SwiftUI e-commerce application that sh
 
 ---
 
-### 🏷️ Tag: v1.0  
+### 🏷️ Tag: v1.0.0-assessment
 **Initial release** featuring a quick prototype implementation of the app's core functionality.  
 
----
-
-### 📝 Release Notes  
+--- 
 
 #### 🚀 Features  
 - **Product Listing**:  
