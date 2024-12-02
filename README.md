@@ -13,7 +13,7 @@ The Carry1st iOS Commerce App is a native SwiftUI e-commerce application that sh
 #### 🚀 Features  
 - **Product Listing**:  
   - Grid layout using `LazyVGrid` for efficient product display.  
-  - Dynamic image loading with caching for seamless user experience.  
+  - Dynamic product display leveraging image caching for performance optimization.  
 
 - **Product Details**:  
   - Product information required shown.  
@@ -30,23 +30,29 @@ The Carry1st iOS Commerce App is a native SwiftUI e-commerce application that sh
 
 ---
 
-### 🏗 Architecture  
+ 
 
-#### **Design Patterns**  
-- **MVVM (Model-View-ViewModel)**: Decouples UI and business logic for maintainability.  
-- **Protocol-Oriented Programming**: Ensures modular and testable components.  
-- **Dependency Injection**: Simplifies testing and promotes clean code.  
+### 🏗 Architectural Decisions
+#### Architecture Pattern
 
-#### **Key Components**  
-- `ProductViewModel`: Handles product data fetching and state presentation.  
-- `CartManagerViewModel`: Orchestrates cart operations and updates.  
-- `CartService`: Encapsulates business logic for cart state management.  
-- `HTTPClient`: Manages API requests and error handling.  
+- MVVM (Model-View-ViewModel): Separates concerns and provides a clean, testable architecture
+- Dependency Injection implemented through protocols and initializer injection
+- Uses Swift's async/await for asynchronous operations
 
----
+#### Dependency Injection
 
-### 📦 Dependency Management  
-This app relies exclusively on **native Swift frameworks** to ensure efficiency and alignment with Apple’s ecosystem.  
+- APIServiceable protocol for network services
+- CartServiceProtocol for cart management
+- Mock services for testing and preview
+- Constructor-based dependency injection to improve testability
+
+#### Networking
+
+- Custom HTTPClient protocol for flexible network requests
+- Centralized error handling with RequestError enum
+- Uses URLSession for network calls
+- Supports both live and mock API services
+
 
 ---
 
@@ -74,8 +80,10 @@ This app relies exclusively on **native Swift frameworks** to ensure efficiency 
 ---
 
 ### 🌐 API Integration  
-- Utilizes a mock JSON server for consistent product data.  
-- Flexible endpoint configuration to simplify future integration.  
+
+- Utilizes a [mock JSON server](https://my-json-server.typicode.com/carry1stdeveloper/mock-product-api/productBundles) for consistent and reliable product data.  
+- The mock API endpoint provides product bundle details, simulating real-world server interactions.  
+- Flexible endpoint configuration to simplify future integration with a live backend.  
 
 ---
 
